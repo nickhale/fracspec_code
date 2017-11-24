@@ -1,4 +1,4 @@
-function [u, A,t] = example99(n, ep)
+function [u, A] = example99(n, ep)
 
 % Construct the operator for this example:
 % init
@@ -12,13 +12,10 @@ A = ep*1i^1.5*DD5(1.5) - EE*X;
 rhs = zeros(2*n, 1);
 
 % Construct and append boundary conditions:
-BCR = [ones(1,n), sqrt(2)*(1:n)]; % Right Dirichlet
+BCR = [ones(1,n), sqrt(2)*(1:n)];               % Right Dirichlet
 BCL = [ones(1,n), zeros(1,n)]; BCL(2:2:n) = -1; % Left Dirichlet
-
-%%
 bc = [0 ; 1];
 BC = [BCL ; BCR]; 
-
 nbc = length(bc);
 
 % Re-order:
@@ -31,8 +28,7 @@ rhs = [bc ; rhs(1:end-nbc)];
 
 % Solve:
 u = zeros(2*n,1);
-% u(idx,1) = mysolve(A, rhs, 2);
-u(idx,1) = A\rhs;
-
+u(idx,1) = mysolve(A, rhs, 2);
+% u(idx,1) = A\rhs;
 
 end
