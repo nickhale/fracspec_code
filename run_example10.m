@@ -1,8 +1,7 @@
 close all
 
 set(0, 'DefaultLineLinewidth', 2)
-x = linspace(-1, 1, 101)';
-xx = linspace(-1, 1, 101)';
+x = linspace(-1, 1, 100)';
 
 nn = 1:20;
 err1 = 0*nn;
@@ -34,7 +33,7 @@ end
 % Plotting:
 
 figure(1) % Solution
-plot(xx, myeval(u, xx, q));
+plot(xx, myeval(u, x, q));
 ylim([0, 1]), grid on
 drawnow, shg, pause(eps)
 print -depsc2 ../figures/example10a

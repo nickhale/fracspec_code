@@ -8,14 +8,14 @@ nn = [nn(1) nn];
 
 err2 = 0*nn; err1 = err2;
 
-xstar = linspace(-1,1,101);
+x = linspace(-1,1,100);
 ep = .0001;
 
 % Error:
 nMax = nn(end);
 n11 = ceil(1.1*nMax);
 u2 = example99(n11, ep);
-sol = myeval(u2, xstar);
+sol = myeval(u2, x);
 
 loopnum = 1;
 t = zeros(nMax, 1);
@@ -32,7 +32,7 @@ for n = nn
     t(n) = toc/loopnum;
     
     % Error 1:
-    err1(n) = norm(myeval(u, xstar) - sol, inf);
+    err1(n) = norm(myeval(u, x) - sol, inf);
     
     n11 = ceil(1.1*n);
     u2 = example99(n11, ep);
